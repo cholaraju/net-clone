@@ -1,7 +1,6 @@
- "use server"
+"use server"
 import { revalidatePath } from "next/cache";
 import prisma from "./utils/db"
-import { json } from "stream/consumers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./utils/auth";
 
@@ -16,6 +15,7 @@ export async function addTowatchlist(formData:FormData) {
         movieId: Number(movieId),
        }
    })
+   console.log(data);
    revalidatePath(pathname);
 }
 
@@ -28,6 +28,7 @@ export async function deleteFromWatchlist(formData:FormData) {
         id: watchlistId
        }
     })
+    console.log(data);
     revalidatePath(pathname);
 
 }
